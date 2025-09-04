@@ -1,3 +1,130 @@
-<pre>
-*tap* *tap* Is this thing on?
-</pre>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <!--
+    wtf... https://docs.daily.co/guides/privacy-and-security/content-security-policy
+  -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self';"> -->
+
+  <!-- The below was working locally, need to update after webrtc -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' http://localhost:5173 'unsafe-eval' blob:;
+    connect-src http://localhost:5173 http://localhost:7860 https://asker-demo-5euxru.eastus.cloudapp.azure.com:8860 wss://localhost:5173 ws://localhost:5173;
+    worker-src 'self' blob:;
+  " /> -->
+
+  <link rel="icon" type="image/svg+xml" href="/assets/vite-DcBtz0py.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+  <script type="module" crossorigin src="/assets/main-CtwPbs2b.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-EacpQ0EF.css">
+</head>
+
+<body>
+  <div class="ribbon">BETA</div>
+  <div class="page-wrap">
+    <div class="flex-blocks">
+      <h1 class="title">STAR GPT</h1>
+      <div>URL: <span id="debugSpan"></span> </div>
+
+      <details>
+        <summary>Work in progress / this AI is probably going to do a bad job disclaimer</summary>
+        <p>
+          Please note this is <em>NOT</em> finished, and I do not presently consider it's outputs useful to an end user. It will try to give you feedback, but <em>do not take it's feedback seriously</em>. I told an older version of this thing an amazing STAR story, and due to an error in my prompt, it absolutely shredded my story. If it does this please ignore it, <em>I think your story was probably great</em>. At present I'm building a classifier to allow the S T A R widget to light up based on where you are in your story, expanding Pipecat-AI's support for Azure AI Foundry, and also experimenting with deployment patterns for small models on Azure.
+        </p>
+      </details>
+
+      <details>
+        <summary>Data Privacy</summary>
+        <p>
+          Your data, if I can manage to free up the time, will be used solely by me and my wife (a proper datascientist) to train a text (and potentially acoustic) classfier that makes the widget below light up correctly as you tell your STAR story. That means by using this demo, you agree to share your data with us and it will remain exclusively with us.
+        </p>
+      </details>
+
+      <details>
+        <summary>About that STAR widget</summary>
+        <p>
+          My primary goal with this app is to create a voice experience wherein the user interacts with a voice AI, and UI widget is updated throughout the course of the conversation based on the progress of the conversation. So to play around with it, just say the word "situation", "task", "action", or "result", and system should highlight the appropriate phase.
+        </p>
+      </details>
+
+      <h3>How to Play</h3>
+      <div>
+        Press connect to begin the interview. The chat bot will lead you through a conversation that has the potential to help you practice telling great STAR stories.
+      </div>
+
+      <div class="app-container">
+        <div>
+          Words Recieved by bot so far <span id="wordsInCount">0</span>
+        </div>
+
+        <div class="classifier-row">
+          <button class="toy-button green" id="connectBtn">Connect</button>
+          <button class="toy-button purple" id="disconnectBtn">Disconnect</button>
+          <div class="classifier-select">
+            <div class="classifier-label">
+              Widget Controller
+            </div>
+            <select id="classifier-select">
+              <option value="1">Simple Keyword-Based Classifier</option>
+              <option value="2" disabled>Zero-shot Classifier</option>
+              <option value="3" disabled>Finetuned zero-shot Classifier</option>
+              <option value="4" disabled>Keyword Classifier</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="star-container">
+          <div id="block-situation" class="block situation">
+            <span>S</span>
+            <div class="label">Situation</div>
+          </div>
+          <div id="block-task" class="block task">
+            <span>T</span>
+            <div class="label">Task</div>
+          </div>
+          <div id="block-action" class="block action">
+            <span>A</span>
+            <div class="label">Action</div>
+          </div>
+          <div id="block-result" class="block result">
+            <span>R</span>
+            <div class="label">Result</div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="chat" class="chat">
+
+        <!--
+        <div class="message">
+          <span class="speaker">STAR GPT:</span>
+          <span class="text chat-wip"></span>
+          <span class="text">Hello</span>
+        </div>
+
+        <div class="message">hello</div>
+        <div class="message">hello</div>
+        <div class="message">hello</div>
+        <div class="message">hello</div>
+        <div class="message">hello</div>
+        <div class="message">hello</div>
+        <div class="message">hello</div>
+        <div class="message">hello</div>
+        <div class="message">hello</div>
+        <div class="message">hello</div>
+        -->
+
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>
